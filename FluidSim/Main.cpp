@@ -43,12 +43,17 @@ int main() {
 		return -1;
 	}
 
+	glEnable(GL_DEPTH);
+
 	glViewport(0, 0, windowH.getHeight(), windowH.getWidth());
 	glfwSetFramebufferSizeCallback(windowH.getWindow(), frame_buffer_callback);
 
 	while (!glfwWindowShouldClose(windowH.getWindow()))
 	{
 		processInput(windowH.getWindow());
+
+		glClearColor(1.0f, 0.0f, 0.0f, 1.0f);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		glfwSwapBuffers(windowH.getWindow());
 		glfwPollEvents();
